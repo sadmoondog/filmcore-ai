@@ -26,7 +26,7 @@ const AnimatedTitle: React.FC<AnimatedTitleProps> = ({
     characters.forEach((char) => {
       const span = document.createElement('span');
       span.innerText = char === ' ' ? '\u00A0' : char;
-      span.className = 'hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-red-600 via-purple-500 to-blue-500 transition-all duration-300';
+      span.className = 'relative inline-block transition-all duration-300';
       title.appendChild(span);
     });
 
@@ -43,18 +43,33 @@ const AnimatedTitle: React.FC<AnimatedTitleProps> = ({
         const distance = Math.abs(charPosition - progress);
         
         if (distance < 0.2) {
-          span.style.backgroundImage = 'linear-gradient(to right, #f87171, #9333ea, #3b82f6)';
-          span.style.backgroundSize = '200% 100%';
-          span.style.backgroundPosition = `${(distance * 500)}% center`;
-          span.classList.add('text-transparent', 'bg-clip-text');
+          // Create projector light effect
+          span.style.textShadow = `
+            0 0 10px rgba(255,255,255,0.8),
+            0 0 20px rgba(255,255,255,0.8),
+            0 0 30px rgba(255,255,255,0.8),
+            0 0 40px rgba(255,255,255,0.4),
+            0 0 70px rgba(255,255,255,0.3),
+            0 0 80px rgba(255,255,255,0.2)
+          `;
+          span.style.color = '#fff';
         } else {
-          span.style.backgroundImage = '';
-          span.classList.remove('text-transparent', 'bg-clip-text');
+          span.style.textShadow = '';
+          span.style.color = '';
         }
       });
     };
 
     title.addEventListener('mousemove', handleMouseMove);
+    
+    // Reset effect when mouse leaves
+    title.addEventListener('mouseleave', () => {
+      Array.from(title.children).forEach((char) => {
+        const span = char as HTMLSpanElement;
+        span.style.textShadow = '';
+        span.style.color = '';
+      });
+    });
     
     // Add animation class after delay
     setTimeout(() => {
@@ -63,11 +78,12 @@ const AnimatedTitle: React.FC<AnimatedTitleProps> = ({
 
     return () => {
       title.removeEventListener('mousemove', handleMouseMove);
+      title.removeEventListener('mouseleave', () => {});
     };
   }, [text, delay]);
   
   return (
-    <h1 ref={titleRef} className={className}>
+    <h1 ref={titleRef} className={`${className} relative cursor-default`}>
       {text}
     </h1>
   );
