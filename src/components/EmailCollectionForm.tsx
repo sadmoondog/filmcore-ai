@@ -6,7 +6,7 @@ const EmailCollectionForm = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [zapierWebhookUrl, setZapierWebhookUrl] = useState('https://hooks.zapier.com/hooks/catch/22039706/2l4l22c/');
+  const [zapierWebhookUrl] = useState('https://hooks.zapier.com/hooks/catch/22039706/2l4l22c/');
   const { toast } = useToast();
 
   const validateEmail = (email: string) => {
@@ -66,28 +66,6 @@ const EmailCollectionForm = () => {
     }
   };
 
-  const handleZapierSetup = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const url = prompt("Enter your Zapier webhook URL:", zapierWebhookUrl);
-    if (url) {
-      setZapierWebhookUrl(url);
-      localStorage.setItem('filmcore_zapier_webhook_url', url);
-      toast({
-        title: "Webhook URL saved",
-        description: "Your Zapier webhook URL has been saved."
-      });
-    }
-  };
-
-  React.useEffect(() => {
-    const savedUrl = localStorage.getItem('filmcore_zapier_webhook_url');
-    if (savedUrl) {
-      setZapierWebhookUrl(savedUrl);
-    } else {
-      localStorage.setItem('filmcore_zapier_webhook_url', zapierWebhookUrl);
-    }
-  }, [zapierWebhookUrl]);
-
   return (
     <div className="w-full max-w-md mx-auto mt-8 transition-all duration-300">
       <form onSubmit={handleSubmit} className="relative">
@@ -124,17 +102,6 @@ const EmailCollectionForm = () => {
           </div>
         </button>
       </form>
-      
-      {process.env.NODE_ENV === 'development' && (
-        <div className="mt-8 text-center">
-          <button 
-            onClick={handleZapierSetup}
-            className="text-xs underline opacity-50 hover:opacity-100"
-          >
-            Configure Zapier Webhook
-          </button>
-        </div>
-      )}
     </div>
   );
 };
