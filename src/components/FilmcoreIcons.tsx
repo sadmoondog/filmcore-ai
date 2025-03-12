@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 // Define the individual icon components
@@ -88,13 +89,18 @@ const FilmcoreIcons = () => {
       {icons.map((Icon, index) => (
         <div 
           key={index} 
-          className="icon-item animate-pulse-slow"
+          className="icon-item group animate-pulse-slow"
           style={{ 
             animationDelay: `${index * 0.2}s`,
             animationDuration: `${3 + Math.random() * 2}s`
           }}
         >
-          <Icon />
+          <div className="relative w-full h-full transition-transform duration-300 group-hover:scale-110">
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full blur-xl -z-10"></div>
+            <div className="relative transition-colors duration-300 group-hover:[&>svg]:fill-white">
+              <Icon />
+            </div>
+          </div>
         </div>
       ))}
     </div>
@@ -102,4 +108,3 @@ const FilmcoreIcons = () => {
 };
 
 export default FilmcoreIcons;
-
