@@ -7,7 +7,7 @@ const EmailCollectionForm = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [zapierWebhookUrl, setZapierWebhookUrl] = useState('');
+  const [zapierWebhookUrl, setZapierWebhookUrl] = useState('https://hooks.zapier.com/hooks/catch/22039706/2l4l22c/');
   const { toast } = useToast();
 
   const validateEmail = (email: string) => {
@@ -21,15 +21,6 @@ const EmailCollectionForm = () => {
       toast({
         title: "Invalid email",
         description: "Please enter a valid email address.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    if (!zapierWebhookUrl) {
-      toast({
-        title: "Setup required",
-        description: "Please set your Zapier webhook URL in the form settings.",
         variant: "destructive",
       });
       return;
@@ -95,8 +86,11 @@ const EmailCollectionForm = () => {
     const savedUrl = localStorage.getItem('filmcore_zapier_webhook_url');
     if (savedUrl) {
       setZapierWebhookUrl(savedUrl);
+    } else {
+      // Store the default URL in localStorage if not already present
+      localStorage.setItem('filmcore_zapier_webhook_url', zapierWebhookUrl);
     }
-  }, []);
+  }, [zapierWebhookUrl]);
 
   return (
     <div className="w-full max-w-md mx-auto mt-8 transition-all duration-300">
