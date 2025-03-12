@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useToast } from "@/hooks/use-toast";
 import { CheckIcon, Loader2 } from 'lucide-react';
@@ -122,7 +121,7 @@ const EmailCollectionForm = () => {
             ) : isSuccess ? (
               <span className="flex items-center justify-center">
                 <CheckIcon className="mr-2 h-4 w-4" />
-                Subscribed
+                Tuned
               </span>
             ) : (
               "Stay Updated"
