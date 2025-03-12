@@ -7,7 +7,7 @@ const EmailCollectionForm = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [googleFormUrl, setGoogleFormUrl] = useState('');
+  const [zapierWebhookUrl, setZapierWebhookUrl] = useState('');
   const { toast } = useToast();
 
   const validateEmail = (email: string) => {
@@ -26,10 +26,10 @@ const EmailCollectionForm = () => {
       return;
     }
 
-    if (!googleFormUrl) {
+    if (!zapierWebhookUrl) {
       toast({
         title: "Setup required",
-        description: "Please set your Google Form URL in the form settings.",
+        description: "Please set your Zapier webhook URL in the form settings.",
         variant: "destructive",
       });
       return;
@@ -38,16 +38,17 @@ const EmailCollectionForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Extract the form ID and input ID from the Google Form URL
-      // This is a simplified example - actual implementation will depend on your Google Form structure
-      const formData = new FormData();
-      formData.append('emailAddress', email); // Replace with your actual form field name
-      
-      // Submit to Google Form
-      const response = await fetch(googleFormUrl, {
+      const response = await fetch(zapierWebhookUrl, {
         method: 'POST',
-        mode: 'no-cors', // Google Forms requires this
-        body: formData
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        mode: 'no-cors', // Required for cross-origin requests
+        body: JSON.stringify({
+          email: email,
+          timestamp: new Date().toISOString(),
+          source: window.location.origin
+        })
       });
       
       // Success state
@@ -76,24 +77,24 @@ const EmailCollectionForm = () => {
   };
 
   // For testing/setup - would be replaced with actual admin interface
-  const handleGoogleFormSetup = (e: React.MouseEvent) => {
+  const handleZapierSetup = (e: React.MouseEvent) => {
     e.preventDefault();
-    const url = prompt("Enter your Google Form submission URL:", googleFormUrl);
+    const url = prompt("Enter your Zapier webhook URL:", zapierWebhookUrl);
     if (url) {
-      setGoogleFormUrl(url);
-      localStorage.setItem('filmcore_google_form_url', url);
+      setZapierWebhookUrl(url);
+      localStorage.setItem('filmcore_zapier_webhook_url', url);
       toast({
-        title: "Form URL saved",
-        description: "Your Google Form URL has been saved."
+        title: "Webhook URL saved",
+        description: "Your Zapier webhook URL has been saved."
       });
     }
   };
 
   // Load saved URL on component mount
   React.useEffect(() => {
-    const savedUrl = localStorage.getItem('filmcore_google_form_url');
+    const savedUrl = localStorage.getItem('filmcore_zapier_webhook_url');
     if (savedUrl) {
-      setGoogleFormUrl(savedUrl);
+      setZapierWebhookUrl(savedUrl);
     }
   }, []);
 
@@ -140,10 +141,10 @@ const EmailCollectionForm = () => {
       {process.env.NODE_ENV === 'development' && (
         <div className="mt-8 text-center">
           <button 
-            onClick={handleGoogleFormSetup}
+            onClick={handleZapierSetup}
             className="text-xs underline opacity-50 hover:opacity-100"
           >
-            Configure Google Form URL
+            Configure Zapier Webhook
           </button>
         </div>
       )}
