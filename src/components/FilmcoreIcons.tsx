@@ -4,70 +4,66 @@ import React from 'react';
 // Define the individual icon components
 export const FilmcoreIcon1 = () => (
   <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 0C0 55.228 44.772 100 100 100V0H0Z" fill="black"/>
+    <rect width="100" height="100" fill="black"/>
   </svg>
 );
 
 export const FilmcoreIcon2 = () => (
   <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M100 0C100 55.228 55.228 100 0 100V0H100Z" fill="black"/>
+    <circle cx="50" cy="50" r="50" fill="black"/>
   </svg>
 );
 
 export const FilmcoreIcon3 = () => (
   <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 100C0 44.772 44.772 0 100 0V100H0Z" fill="black"/>
+    <path d="M50 0L100 86.6025H0L50 0Z" fill="black"/>
   </svg>
 );
 
 export const FilmcoreIcon4 = () => (
   <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M100 100C100 44.772 55.228 0 0 0V100H100Z" fill="black"/>
+    <rect x="10" y="10" width="80" height="80" stroke="black" strokeWidth="20"/>
   </svg>
 );
 
 export const FilmcoreIcon5 = () => (
   <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 0L100 0L100 100L0 100L0 0Z" fill="none"/>
-    <path d="M0 0L50 0L50 50L0 50L0 0Z" fill="black"/>
-    <path d="M50 50L100 50L100 100L50 100L50 50Z" fill="black"/>
+    <path d="M0 0L100 0L100 100L0 100L0 0Z" fill="black"/>
+    <path d="M25 25L75 25L75 75L25 75L25 25Z" fill="white"/>
   </svg>
 );
 
 export const FilmcoreIcon6 = () => (
   <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 0L100 0L100 100L0 100L0 0Z" fill="none"/>
-    <path d="M50 0L100 0L100 50L50 50L50 0Z" fill="black"/>
-    <path d="M0 50L50 50L50 100L0 100L0 50Z" fill="black"/>
+    <rect width="100" height="100" fill="black"/>
+    <path d="M25 0L50 50L25 100L0 100L0 0L25 0Z" fill="white"/>
+    <path d="M75 0L100 0L100 100L75 100L50 50L75 0Z" fill="white"/>
   </svg>
 );
 
 export const FilmcoreIcon7 = () => (
   <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 0L100 0L100 100L0 100L0 0Z" fill="none"/>
-    <circle cx="50" cy="50" r="50" fill="black"/>
-    <circle cx="50" cy="50" r="25" fill="white"/>
+    <path d="M50 0L93.3013 25V75L50 100L6.69873 75V25L50 0Z" fill="black"/>
   </svg>
 );
 
 export const FilmcoreIcon8 = () => (
   <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 0L0 100L50 50L0 0Z" fill="black"/>
-    <path d="M100 0L100 100L50 50L100 0Z" fill="black"/>
+    <path d="M0 50C0 22.3858 22.3858 0 50 0C77.6142 0 100 22.3858 100 50V100H0V50Z" fill="black"/>
   </svg>
 );
 
 export const FilmcoreIcon9 = () => (
   <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="100" height="100" fill="none"/>
-    <circle cx="50" cy="50" r="40" stroke="black" strokeWidth="20"/>
-    <path d="M25 25L75 75M75 25L25 75" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+    <path d="M0 25C0 11.1929 11.1929 0 25 0H75C88.8071 0 100 11.1929 100 25V75C100 88.8071 88.8071 100 75 100H25C11.1929 100 0 88.8071 0 75V25Z" fill="black"/>
+    <path d="M25 25C25 25 25 25 25 25H75C75 25 75 25 75 25V75C75 75 75 75 75 75H25C25 75 25 75 25 75V25Z" stroke="white" strokeWidth="10"/>
   </svg>
 );
 
 export const FilmcoreIcon10 = () => (
   <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M100 0C100 55.228 55.228 100 0 100H100V0Z" fill="black"/>
+    <path d="M25.0001 14.6447L85.3554 75L75.0001 85.3553L14.6447 25L25.0001 14.6447Z" fill="black"/>
+    <path d="M85.3554 25L25.0001 85.3553L14.6447 75L75.0001 14.6447L85.3554 25Z" fill="black"/>
   </svg>
 );
 
