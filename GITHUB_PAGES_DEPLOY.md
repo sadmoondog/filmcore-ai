@@ -10,40 +10,24 @@ This document explains how to deploy the FILMCORE landing page to GitHub Pages.
 
 ## Deployment Steps
 
-1. Update the "homepage" field in your package.json to match your GitHub Pages URL:
-   ```json
-   "homepage": "https://yourusername.github.io/your-repo-name"
-   ```
-
-2. Update the `base` property in vite.config.ts to match your repository name:
+1. Make sure the `base` property in vite.config.ts matches your repository name:
    ```js
-   base: mode === 'production' ? '/your-repo-name/' : '/',
+   base: mode === 'production' ? '/filmcore-ai/' : '/',
    ```
+   Replace `filmcore-ai` with your actual repository name.
 
-3. Install the gh-pages package (if not already installed):
+2. Run the following commands to deploy:
    ```
-   npm install gh-pages --save-dev
-   ```
-
-4. Add the following scripts to your package.json:
-   ```json
-   "scripts": {
-     "predeploy": "npm run build",
-     "deploy": "gh-pages -d dist"
-   }
-   ```
-
-5. Deploy to GitHub Pages:
-   ```
+   npm run build
    npm run deploy
    ```
 
-6. Configure GitHub Pages in your repository settings:
+3. Configure GitHub Pages in your repository settings:
    - Go to Settings > Pages
    - Select the "gh-pages" branch as the source
    - Save the changes
 
-Your site should now be live at `https://yourusername.github.io/your-repo-name`!
+Your site should now be live at `https://yourusername.github.io/filmcore-ai/`!
 
 ## Troubleshooting
 

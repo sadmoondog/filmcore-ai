@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => ({
   // Add base path for GitHub Pages
   // Change this to your repository name when deploying
   // Example: If your repo is yourusername.github.io/filmcore, use "/filmcore/"
-  base: mode === 'production' ? '/your-repo-name/' : '/',
+  base: mode === 'production' ? '/filmcore-ai/' : '/',
   plugins: [
     react(),
     mode === 'development' &&

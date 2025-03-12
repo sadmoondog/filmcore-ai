@@ -1,0 +1,31 @@
+
+# Update your package.json
+
+Since you're getting the error "Missing script: deploy", you need to add the following scripts to your package.json file:
+
+Open your package.json file and add these lines to the "scripts" section:
+
+```json
+"predeploy": "npm run build",
+"deploy": "gh-pages -d dist"
+```
+
+Your scripts section should look something like this:
+
+```json
+"scripts": {
+  "dev": "vite",
+  "build": "tsc && vite build",
+  "preview": "vite preview",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist"
+}
+```
+
+After making these changes, you can run:
+
+```
+npm run deploy
+```
+
+This will build your project and deploy it to GitHub Pages.
