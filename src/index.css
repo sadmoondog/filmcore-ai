@@ -103,6 +103,20 @@
     }
   }
 
+  /* Button animation */
+  @keyframes pulse-subtle {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.01);
+    }
+  }
+
+  .animate-pulse-subtle {
+    animation: pulse-subtle 2s infinite ease-in-out;
+  }
+  
   .char-animation span:nth-child(1) { animation-delay: 0.1s; }
   .char-animation span:nth-child(2) { animation-delay: 0.15s; }
   .char-animation span:nth-child(3) { animation-delay: 0.2s; }
