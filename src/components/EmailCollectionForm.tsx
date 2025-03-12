@@ -66,7 +66,6 @@ const EmailCollectionForm = () => {
     }
   };
 
-  // For testing/setup - would be replaced with actual admin interface
   const handleZapierSetup = (e: React.MouseEvent) => {
     e.preventDefault();
     const url = prompt("Enter your Zapier webhook URL:", zapierWebhookUrl);
@@ -80,13 +79,11 @@ const EmailCollectionForm = () => {
     }
   };
 
-  // Load saved URL on component mount
   React.useEffect(() => {
     const savedUrl = localStorage.getItem('filmcore_zapier_webhook_url');
     if (savedUrl) {
       setZapierWebhookUrl(savedUrl);
     } else {
-      // Store the default URL in localStorage if not already present
       localStorage.setItem('filmcore_zapier_webhook_url', zapierWebhookUrl);
     }
   }, [zapierWebhookUrl]);
@@ -108,10 +105,8 @@ const EmailCollectionForm = () => {
           className={`submit-button mt-4 w-full relative overflow-hidden group transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] ${!email || isSubmitting || isSuccess ? 'opacity-70' : 'animate-pulse-subtle'}`}
           disabled={isSubmitting || isSuccess || !email}
         >
-          {/* Button background animation */}
           <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           
-          {/* Button content */}
           <div className="relative z-10">
             {isSubmitting ? (
               <span className="flex items-center justify-center">
@@ -124,13 +119,12 @@ const EmailCollectionForm = () => {
                 Tuned
               </span>
             ) : (
-              "Stay Updated"
+              "Stay Tuned"
             )}
           </div>
         </button>
       </form>
       
-      {/* Admin configuration - only shown in development mode */}
       {process.env.NODE_ENV === 'development' && (
         <div className="mt-8 text-center">
           <button 
