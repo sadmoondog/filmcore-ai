@@ -42,12 +42,11 @@ const AnimatedTitle: React.FC<AnimatedTitleProps> = ({
         const charPosition = span.offsetLeft / totalWidth;
         const distance = Math.abs(charPosition - progress);
         
-        if (distance < 0.1) { // Reduced from 0.2 to 0.1 for smaller beam
-          // Create gray-yellow gradient projector light effect
+        if (distance < 0.1) { // Small beam radius
+          // Create sharp gray-yellow gradient projector light effect
           span.style.textShadow = `
-            0 0 10px rgba(142, 145, 150, 0.8),
-            0 0 20px rgba(254, 247, 205, 0.8),
-            0 0 30px rgba(254, 247, 205, 0.6)
+            0 0 3px rgba(142, 145, 150, 0.9),
+            0 0 6px rgba(254, 247, 205, 0.9)
           `;
           span.style.color = '#403E43'; // Keep letters visible with a dark gray color
         } else {
