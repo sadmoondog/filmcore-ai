@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 // Define the individual icon components with their themed colors
@@ -102,9 +101,6 @@ const FilmcoreIcons = () => {
             ></div>
             <div className={`relative transition-all duration-300 text-black group-hover:text-white`}>
               <Icon />
-            </div>
-            <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs font-medium capitalize">
-              {theme}
             </div>
           </div>
         </div>
